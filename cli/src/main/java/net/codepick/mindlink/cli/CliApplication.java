@@ -1,10 +1,12 @@
 package net.codepick.mindlink.cli;
 
+import net.codepick.mindlink.cli.command.CommandManager;
 import net.codepick.mindlink.cli.exception.CriticalApplicationException;
-import net.codepick.utils.args.Args;
 
 public class CliApplication {
-    public void start(Args args) {
+    private CommandManager commandManager;
+
+    public void start(LaunchArgs args) {
         try {
             if (args.hasCommand()) {
                 startCommand(args);
@@ -16,11 +18,11 @@ public class CliApplication {
         }
     }
 
-    private void startCommand(Args args) {
-        // TODO
+    private void startCommand(LaunchArgs args) {
+        commandManager.runCommand(args.getCommandName(), args.getCommandArgs());
     }
 
-    private void startInteractive(Args args) {
+    private void startInteractive(LaunchArgs args) {
         // TODO
     }
 
