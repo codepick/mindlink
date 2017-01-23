@@ -1,0 +1,2 @@
+rootProject.name = 'Mindlink'
+include 'cli', 'utils'
