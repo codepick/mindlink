@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>[%.-1level] %date{HH:mm:ss} [%-36.36logger] : %msg %n</Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="consoleAppender"/>
+    </root>
+
+    <logger name="org.springframework.jdbc" additivity="false">
+        <level value="WARN"/>
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+</configuration>
