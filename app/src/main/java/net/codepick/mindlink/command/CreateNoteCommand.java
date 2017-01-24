@@ -21,10 +21,10 @@ import static net.codepick.mindlink.utils.IOUtils.message;
 public class CreateNoteCommand implements Command {
 
     @Override
-    public void execute(CommandArgs params) {
+    public void execute(CommandArgs args) {
 
 //    public void runWithArgs(Map<String, String> commandArgs) {
-        String noteFilePath = getKeyFromMap(params);
+        String noteFilePath = getKeyFromMap(args);
         if (noteFilePath.isEmpty()) {
             interactiveCreateNote();
         } else {

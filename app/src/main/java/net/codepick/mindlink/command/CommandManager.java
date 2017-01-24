@@ -1,8 +1,9 @@
 package net.codepick.mindlink.command;
 
 import net.codepick.commander.CommandArgs;
-import net.codepick.commander.dispatcher.AnnotationBasedCommandDispatcher;
-import net.codepick.commander.dispatcher.CommandDispatcher;
+import net.codepick.commander.AnnotationBasedCommandDispatcher;
+import net.codepick.commander.CommandDispatcher;
+import net.codepick.mindlink.utils.IOUtils;
 
 public class CommandManager {
     private CommandDispatcher commandDispatcher;
@@ -16,9 +17,13 @@ public class CommandManager {
     }
 
     public static void main(String[] args) {
-        CommandDispatcher cs = new AnnotationBasedCommandDispatcher("net.codepick.mindlink.cli.command");
+        CommandDispatcher cs = new AnnotationBasedCommandDispatcher("net.codepick.mindlink.command");
         args = new String[] {"hello world", "-s", "-t=TestType from cmd", "--find=findSsTRING", "some test", "second val"};
 
         cs.runCommand("test", new CommandArgs(args));
+
+        IOUtils.message("Тестирование команды config");
+        CommandManager manager = new CommandManager("net.codepick.mindlink.command");
+        manager.runCommand("config", new CommandArgs("databasepath", "someval"));
     }
 }

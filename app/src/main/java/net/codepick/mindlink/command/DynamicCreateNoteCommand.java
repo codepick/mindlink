@@ -14,7 +14,7 @@ import java.util.UUID;
 public class DynamicCreateNoteCommand implements Command {
 
     @Override
-    public void execute(CommandArgs params) {
+    public void execute(CommandArgs args) {
         File file = new File(UUID.randomUUID().toString() + ".tmpnote");
         try {
             String canonicalPath = file.getCanonicalPath();

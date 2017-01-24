@@ -107,4 +107,22 @@ public class ConfigManager {
         properties.put(ConfigParameter.DatabasePath.getFieldName(), dbPath);
         return properties;
     }
+
+    public String getParamValue(ConfigParameter parameter) {
+        return "testDBValue"; // TODO Impl
+    }
+
+
+    public void setParam(ConfigParameter parameter, String configEntryValue) {
+        // TODO Impl
+    }
+
+    public ConfigParameter getParameterByName(String configParamName) {
+        for (ConfigParameter parameter : ConfigParameter.values()) {
+            if (configParamName.equalsIgnoreCase(parameter.name())) {
+                return parameter;
+            }
+        }
+        return null;
+    }
 }

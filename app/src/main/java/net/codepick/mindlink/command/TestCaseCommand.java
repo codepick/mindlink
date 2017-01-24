@@ -16,7 +16,7 @@ public class TestCaseCommand implements Command {
 
 
     @Override
-    public void execute(CommandArgs params) {
+    public void execute(CommandArgs args) {
         testGetThemeByPath();
 
         testCreateThemeByPath();

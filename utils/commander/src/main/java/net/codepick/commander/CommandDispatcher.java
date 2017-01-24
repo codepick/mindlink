@@ -1,4 +1,4 @@
-package net.codepick.commander.dispatcher;
+package net.codepick.commander;
 
 import net.codepick.commander.CommandArgs;
 
