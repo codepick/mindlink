@@ -2,6 +2,7 @@ package net.codepick.mindlink;
 
 import net.codepick.commander.exception.CommandNotFoundException;
 import net.codepick.mindlink.exception.CriticalApplicationException;
+import net.codepick.mindlink.interactive.InteractiveMode;
 import net.codepick.mindlink.utils.IOUtils;
 import net.codepick.mindlink.utils.LaunchArgs;
 
@@ -31,6 +32,7 @@ public class Application {
     private void startInteractive(LaunchArgs args) {
         // TODO Impl
         message("[TODO] Интерактивный режим");
+        new InteractiveMode().start(args);
     }
 
 
