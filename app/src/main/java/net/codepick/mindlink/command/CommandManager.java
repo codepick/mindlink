@@ -1,4 +1,4 @@
-package net.codepick.mindlink.cli.command;
+package net.codepick.mindlink.command;
 
 import net.codepick.commander.CommandArgs;
 import net.codepick.commander.dispatcher.AnnotationBasedCommandDispatcher;

@@ -1,4 +1,4 @@
-package net.codepick.mindlink.cli.command;
+package net.codepick.mindlink.command;
 
 import net.codepick.commander.*;
 import net.codepick.commander.param.parser.TestType;

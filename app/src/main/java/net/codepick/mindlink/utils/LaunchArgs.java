@@ -1,4 +1,4 @@
-package net.codepick.mindlink.cli;
+package net.codepick.mindlink.utils;
 
 import net.codepick.commander.CommandArgs;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +16,7 @@ public class LaunchArgs {
     }
 
     public boolean hasCommand() {
-        return StringUtils.isBlank(commandName);
+        return StringUtils.isNotBlank(commandName);
     }
 
     public String getCommandName() {
