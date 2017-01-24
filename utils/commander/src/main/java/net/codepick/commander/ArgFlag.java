@@ -12,14 +12,10 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ArgParam {
+public @interface ArgFlag {
     String shortName() default EMPTY;
 
     String longName() default EMPTY;
 
-    boolean required() default false;
-
     String defaultValue() default EMPTY;
-
-    Class<? extends FromStringParser> parser() default PrimitiveTypeParser.class;
 }

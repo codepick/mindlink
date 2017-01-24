@@ -33,7 +33,7 @@ public class PrimitiveTypeParser implements FromStringParser {
             return Boolean.valueOf(value);
         } else {
             System.out.println("ERROR: not implemented parse for type:" + returnType + " in PrimitiveTypeParser");
+            return null;
         }
-        return null;
     }
 }

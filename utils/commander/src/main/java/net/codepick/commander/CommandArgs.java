@@ -11,7 +11,9 @@ import java.util.Map;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class CommandArgs {
-    private static final java.lang.String EQUAL_SIGN = "=";
+    private static final String SHORT_PREFIX = "-";
+    private static final String LONG_PREFIX = "--";
+    private static final String EQUAL_SIGN = "=";
 
     private Map<String, String> shortParamsMap = new HashMap<>();
     private Map<String, String> longParamsMap = new HashMap<>();
@@ -21,11 +23,11 @@ public class CommandArgs {
         parseArgs(commandArgs);
     }
 
-    public boolean isParamPresent(CommandParam param) {
-        return shortParamsMap.containsKey(param.getShortName()) || longParamsMap.containsKey(param.getLongName());
+    public boolean hasParam(CommandParam param) {
+        return (param.hasShortName() && shortParamsMap.containsKey(param.getShortName())) || (param.hasLongName() && longParamsMap.containsKey(param.getLongName()));
     }
 
-    public boolean isParamValuePresent(CommandParam param) {
+    public boolean hasParamValue(CommandParam param) {
         return getParamValue(param) != null;
     }
 
@@ -35,13 +37,14 @@ public class CommandArgs {
             if (value != null) {
                 return value;
             }
-        } else if (param.hasLongName()) {
+        }
+        if (param.hasLongName()) {
             String value = longParamsMap.get(param.getLongName());
             if (value != null) {
                 return value;
             }
         }
-        return param.getDefaultStringValue();
+        return null;
     }
 
     public int noParamValuesSize() {
@@ -58,11 +61,11 @@ public class CommandArgs {
 
     private void parseArgs(String[] tokens) {
         for (String token : tokens) {
-            if (token.startsWith("--")) {
-                Pair<String, String> keyValue = parseTokenWithPrefix(token, "--");
+            if (token.startsWith(LONG_PREFIX)) {
+                Pair<String, String> keyValue = parseTokenWithPrefix(token, LONG_PREFIX);
                 longParamsMap.put(keyValue.getKey(), keyValue.getValue());
-            } else if (token.startsWith("-")) {
-                Pair<String, String> keyValue = parseTokenWithPrefix(token, "-");
+            } else if (token.startsWith(SHORT_PREFIX)) {
+                Pair<String, String> keyValue = parseTokenWithPrefix(token, SHORT_PREFIX);
                 shortParamsMap.put(keyValue.getKey(), keyValue.getValue());
             } else {
                 noParamValues.add(token);
@@ -80,7 +83,7 @@ public class CommandArgs {
 
     // TEST: TODO Move to test classes
     public static void main(String[] args) {
-
+        testParseTokenWithPrefix();
     }
 
     public static void testParseTokenWithPrefix() {

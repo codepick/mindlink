@@ -1,10 +1,8 @@
 package net.codepick.commander.param;
 
-import net.codepick.commander.param.parser.FromStringParser;
-
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-public abstract class CommandParam <T> {
+public class CommandParam {
     private String longName;
     private String shortName;
     private String description;
@@ -49,6 +47,4 @@ public abstract class CommandParam <T> {
     public void setDefaultStringValue(String defaultStringValue) {
         this.defaultStringValue = defaultStringValue;
     }
-
-    public abstract FromStringParser<T> getParser();
 }
