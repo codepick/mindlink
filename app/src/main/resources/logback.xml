@@ -17,4 +17,8 @@
         <level value="WARN"/>
         <appender-ref ref="consoleAppender"/>
     </logger>
+    <logger name="org.reflections" additivity="false">
+        <level value="WARN"/>
+        <appender-ref ref="consoleAppender"/>
+    </logger>
 </configuration>

@@ -2,6 +2,7 @@ package net.codepick.mindlink.command;
 
 import net.codepick.commander.Command;
 import net.codepick.commander.CommandArgs;
+import net.codepick.commander.NamedCommand;
 import net.codepick.mindlink.ApplicationContext;
 import net.codepick.mindlink.dao.ThemeDao;
 import net.codepick.mindlink.dao.exception.ObjectNotExistException;
@@ -12,6 +13,7 @@ import java.util.Arrays;
 
 import static net.codepick.mindlink.utils.IOUtils.message;
 
+@NamedCommand("test-theme-path")
 public class TestCaseCommand implements Command {
 
 

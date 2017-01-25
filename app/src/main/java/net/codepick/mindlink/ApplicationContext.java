@@ -140,11 +140,10 @@ public class ApplicationContext {
         List<String> statements = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
 
-        InputStream fileStream = Application.class.getResourceAsStream("core/dao/sqlite/createDB.sql");
-//            FileReader fileReader = new FileReader("createDB.sql");
+        InputStream fileStream = getClass().getClassLoader().getResourceAsStream("database/create_database.sql");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(fileStream))) {
 
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
                     sb.append(line).append("\r\n");

@@ -1,7 +1,9 @@
 package net.codepick.mindlink.command;
 
+import net.codepick.commander.ArgValue;
 import net.codepick.commander.Command;
 import net.codepick.commander.CommandArgs;
+import net.codepick.commander.NamedCommand;
 import net.codepick.mindlink.ApplicationContext;
 import net.codepick.mindlink.dao.NoteDao;
 import net.codepick.mindlink.dao.ThemeDao;
@@ -9,6 +11,7 @@ import net.codepick.mindlink.dao.exception.ObjectAlreadyExistException;
 import net.codepick.mindlink.domain.Note;
 import net.codepick.mindlink.domain.Theme;
 import net.codepick.mindlink.parser.FileNoteParser;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.File;
@@ -18,29 +21,19 @@ import java.io.IOException;
 import static net.codepick.mindlink.utils.IOUtils.errorMessage;
 import static net.codepick.mindlink.utils.IOUtils.message;
 
+@NamedCommand("addnote")
 public class CreateNoteCommand implements Command {
+
+    @ArgValue(index = 0)
+    private String noteFilePath;
 
     @Override
     public void execute(CommandArgs args) {
-
-//    public void runWithArgs(Map<String, String> commandArgs) {
-        String noteFilePath = getKeyFromMap(args);
-        if (noteFilePath.isEmpty()) {
+        if (StringUtils.isBlank(noteFilePath)) {
             interactiveCreateNote();
         } else {
             createNoteByFilePath(noteFilePath);
         }
-    }
-
-    //    private String getKeyFromMap(Map<String, String> map) {
-    private String getKeyFromMap(CommandArgs args) {
-//        args.getParamValue();
-//        if (map.size() == 1) {
-//            return map.keySet().iterator().next();
-//        } else if (map.size() > 1) {
-//            errorMessage("Команде подано больше 1 аргумента, только 1ый аргумент будет обработан");
-//        }
-        return "";
     }
 
     private void interactiveCreateNote() {

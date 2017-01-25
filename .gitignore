@@ -6,3 +6,7 @@
 **/build
 **/classes
 *.class
+
+# Application files
+**/*.db
+config.properties

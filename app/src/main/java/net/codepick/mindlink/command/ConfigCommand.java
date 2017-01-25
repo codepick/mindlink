@@ -59,42 +59,4 @@ public class ConfigCommand implements Command {
             message("'%s' = '%s'", parameter, paramValue);
         }
     }
-
-    ////////////////////////////////
-//    // TODO Replace implementation
-//    @Override
-//    public void execute1(CommandArgs params) {
-////        if (hasDbPathParam(commandArgs)) {
-////            processDbPathParam(commandArgs);
-////        } else if (hasSomeOtherParam(commandArgs)) {
-////            setSomeOtherParam(commandArgs);
-////        }
-//    }
-//
-//    private boolean hasDbPathParam(Map<String, String> commandArgs) {
-//        return commandArgs.containsKey(ConfigParameter.DatabasePath.getFieldName());
-//    }
-//
-//    private void processDbPathParam(Map<String, String> commandArgs) {
-//        String dbPathValue = commandArgs.get(ConfigParameter.DatabasePath.getFieldName());
-//        if (!dbPathValue.isEmpty()) {
-//            try {
-//                configManager.setDbPath(dbPathValue);
-//                configManager.saveConfigToFile();
-//            } catch (ConfigFileNotSavedException e) {
-//                errorMessage("Не удалось обновить файл конфигурации. '%s'", e.getMessage());
-//            }
-//            message("Установлен путь до базы данных: %s", configManager.getDbPath());
-//        } else {
-//            message("Путь до базы данных: %s", configManager.getDbPath());
-//        }
-//    }
-//
-//    private boolean hasSomeOtherParam(Map<String, String> commandArgs) {
-//        return false; // TODO Del, Stub
-//    }
-//
-//    private void setSomeOtherParam(Map<String, String> commandArgs) {
-//        // TODO Del, Stub
-//    }
 }
