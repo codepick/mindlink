@@ -19,26 +19,22 @@ public class MenuState extends State {
     public void execute() {
         message("");
         message("===== ГЛАВНОЕ МЕНЮ ======");
-
         message("1 : Навигация по заметкам");
-        message("2 : Выход");
+        message("2 : Добавить заметку");
+        message("3 : Выход");
         message("");
         String input = getInput("Введите номер:");
         switch (input) {
             case "1":
-//                message("Режим навигации по заметкам");
                 getStateStack().push(new NoteNavigationState(getStateStack()));
                 break;
             case "2":
-                getStateStack().pop();
+                getStateStack().push(new AddNoteState(getStateStack()));
                 break;
             case "3":
-                try {
-                    ApplicationContext.get().getCommandManager().runCommand("newnote", new CommandArgs());
-                } catch (CommandNotFoundException e) {
-                    e.printStackTrace();
-                }
+                getStateStack().pop();
                 break;
+
             default:
                 message("Некорректный номер");
         }
